@@ -1,15 +1,16 @@
 package src;
 
-public class RobertHolder {
-    private String[] bucket;
+public class RobertHolder <T>{
+    private T[] bucket;
     private int size;
 
+    @SuppressWarnings("unchecked")
     public RobertHolder(){
-        bucket = new String[10];
+        bucket = (T[]) new Object[10];
         size = 0;
     }
 
-    public void addToBucket(String thing){
+    public void addToBucket(T thing){
         if(size == bucket.length){
            doubleBucketSize();
         }
@@ -25,18 +26,19 @@ public class RobertHolder {
         System.out.println(bucket[index]);
     }
 
+    @SuppressWarnings("unchecked")
     public void clearBucket(){
-        bucket = new String[10];
+        bucket = (T[]) new Object[10];
         size = 0;
     }
 
     public void printAll(){
-        for(int i = 0; i < bucket.length; i++){
+        for(int i = 0; i < size; i++){
             System.out.print("[" + bucket[i] + "]");
         }
     }
 
-    public void addAtIndex(int index, String thing) {
+    public void addAtIndex(int index, T thing) {
         if (size == bucket.length){
             doubleBucketSize();
         }
@@ -47,25 +49,25 @@ public class RobertHolder {
         size++;
     }
 
-    public void replaceAtIndex(int index, String thing){
+    public void replaceAtIndex(int index, T thing){
         if (size == bucket.length){
             doubleBucketSize();
         }
         bucket[index] = thing;
     }
 
-    public void find(String thing){
+    public void find(T thing){
         for(int i = 0; i < size; i++){
-            if(bucket[i].equalsIgnoreCase(thing)){
+            if(bucket[i].equals(thing)){
                 System.out.println(thing + " is in the array!");
             }
         }
     }
 
-    public void findCount(String thing ){
+    public void findCount(T thing ){
         int count = 0;
         for(int i = 0; i < size - 1; i++){
-            if(bucket[i].equalsIgnoreCase(thing)){
+            if(bucket[i].equals(thing)){
                 count++;
             }
         }
@@ -81,15 +83,16 @@ public class RobertHolder {
         size--;
     }
 
+    @SuppressWarnings("unchecked")
     public void doubleBucketSize(){
-        String[] bucket2 = new String[bucket.length * 2];
+        T[] bucket2 = (T[]) new Object[bucket.length * 2];
         for(int i = 0; i < bucket.length; i++){
             bucket2[i] =  bucket[i];
         }
         bucket = bucket2;
     }
 
-    public void addToEnd(String thing){
+    public void addToEnd(T thing){
         if (size == bucket.length){
             doubleBucketSize();
         }
@@ -97,9 +100,10 @@ public class RobertHolder {
         size++;
     }
 
-    public RobertHolder cloneClass(){
-        RobertHolder robertCopy = new RobertHolder();
-        robertCopy.bucket = new String[this.bucket.length];
+    @SuppressWarnings("unchecked")
+    public RobertHolder<T> cloneClass(){
+        RobertHolder<T> robertCopy = new RobertHolder<>();
+        robertCopy.bucket = (T[]) new Object[this.bucket.length];
         for(int i = 0; i < size; i++){
             robertCopy.bucket[i] = this.bucket[i];
         }
@@ -107,8 +111,9 @@ public class RobertHolder {
         return robertCopy;
     }
 
-    public String[] getBucket(){
-        String[] arrayValues = new String[size];
+    @SuppressWarnings("unchecked")
+    public T[] getBucket(){
+        T[] arrayValues = (T[]) new Object[size];
         for(int i = 0; i < size; i++){
             arrayValues[i] = bucket[i];
         }

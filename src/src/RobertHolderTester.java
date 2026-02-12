@@ -2,7 +2,7 @@ package src;
 
 public class RobertHolderTester {
     public static void main(String[] args) {
-        RobertHolder robert = new RobertHolder();
+        RobertHolder<String> robert = new RobertHolder<>();
 
         robert.addToBucket("HI");
         System.out.println(robert.size());
@@ -36,15 +36,15 @@ public class RobertHolderTester {
         robert.getStringAtIndex(3);
         System.out.println(robert.size());
         robert.addToEnd("End?");
-        robert.find("what");
-        robert.findCount("is up");
+        robert.find("WHAT");
+        robert.findCount("IS UP");
         robert.printAll();
-        RobertHolder robertClone = robert.cloneClass();
+        RobertHolder<String> robertClone = robert.cloneClass();
         robert.clearBucket();
         robert.printAll();
         System.out.println("\n\nCleared print spacer");
         robertClone.printAll();
-        String[] robertCloneBucket = robertClone.getBucket();
+        Object[] robertCloneBucket = robertClone.getBucket();
         System.out.println("\n\n" + robertCloneBucket[0]);
     }
 }

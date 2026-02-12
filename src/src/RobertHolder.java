@@ -1,12 +1,11 @@
 package src;
 
 public class RobertHolder <T>{
-    private T[] bucket;
+    private Object[] bucket;
     private int size;
 
-    @SuppressWarnings("unchecked")
     public RobertHolder(){
-        bucket = (T[]) new Object[10];
+        bucket =  new Object[10];
         size = 0;
     }
 
@@ -26,9 +25,8 @@ public class RobertHolder <T>{
         System.out.println(bucket[index]);
     }
 
-    @SuppressWarnings("unchecked")
     public void clearBucket(){
-        bucket = (T[]) new Object[10];
+        bucket = new Object[10];
         size = 0;
     }
 
@@ -83,9 +81,8 @@ public class RobertHolder <T>{
         size--;
     }
 
-    @SuppressWarnings("unchecked")
     public void doubleBucketSize(){
-        T[] bucket2 = (T[]) new Object[bucket.length * 2];
+        Object[] bucket2 = new Object[bucket.length * 2];
         for(int i = 0; i < bucket.length; i++){
             bucket2[i] =  bucket[i];
         }
@@ -100,10 +97,9 @@ public class RobertHolder <T>{
         size++;
     }
 
-    @SuppressWarnings("unchecked")
     public RobertHolder<T> cloneClass(){
         RobertHolder<T> robertCopy = new RobertHolder<>();
-        robertCopy.bucket = (T[]) new Object[this.bucket.length];
+        robertCopy.bucket = new Object[this.bucket.length];
         for(int i = 0; i < size; i++){
             robertCopy.bucket[i] = this.bucket[i];
         }
@@ -115,8 +111,13 @@ public class RobertHolder <T>{
     public T[] getBucket(){
         T[] arrayValues = (T[]) new Object[size];
         for(int i = 0; i < size; i++){
-            arrayValues[i] = bucket[i];
+            arrayValues[i] = (T) bucket[i];
         }
         return arrayValues;
+    }
+
+    @SuppressWarnings("unchecked")
+    public T getAtIndex(int index){
+        return (T)bucket[index];
     }
 }

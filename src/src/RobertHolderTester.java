@@ -2,49 +2,47 @@ package src;
 
 public class RobertHolderTester {
     public static void main(String[] args) {
-        RobertHolder<String> robert = new RobertHolder<>();
+        CustomArrayList<String> robert = new CustomArrayList<>();
 
-        robert.addToBucket("HI");
+        robert.add("HI");
         System.out.println(robert.size());
-        robert.addToBucket("HELLO");
+        robert.add("HELLO");
         System.out.println(robert.size());
-        robert.addToBucket("HI THERE");
+        robert.add("HI THERE");
         System.out.println(robert.size());
-        robert.addToBucket("HELLO THERE");
+        robert.add("HELLO THERE");
         System.out.println(robert.size());
-        robert.addToBucket("WHAT");
+        robert.add("WHAT");
         System.out.println(robert.size());
-        robert.addToBucket("IS UP");
+        robert.add("IS UP");
         System.out.println(robert.size());
-        robert.addToBucket("IS UP");
+        robert.add("IS UP");
         System.out.println(robert.size());
-        robert.addToBucket("IS UP");
+        robert.add("IS UP");
         System.out.println(robert.size());
-        robert.addToBucket("IS UP");
+        robert.add("IS UP");
         System.out.println(robert.size());
-        robert.addToBucket("IS UP");
+        robert.add("IS UP");
         System.out.println(robert.size());
-        robert.addToBucket("IS UP");
+        robert.add("IS UP");
         System.out.println(robert.size());
-        robert.addToBucket("IS UP");
+        robert.add("IS UP");
         System.out.println(robert.size());
-        robert.getStringAtIndex(3);
+        robert.printStringAtIndex(3);
         robert.removeAtIndex(3);
         robert.addAtIndex(3, "Please");
-        robert.getStringAtIndex(3);
+        robert.printStringAtIndex(3);
         robert.replaceAtIndex(3, "No");
-        robert.getStringAtIndex(3);
+        robert.printStringAtIndex(3);
         System.out.println(robert.size());
-        robert.addToEnd("End?");
+        robert.add("End?");
         robert.find("WHAT");
         robert.findCount("IS UP");
         robert.printAll();
-        RobertHolder<String> robertClone = robert.cloneClass();
-        robert.clearBucket();
+        CustomArrayList<String> robertClone = robert.cloneClass();
+        robert.clear();
         robert.printAll();
         System.out.println("\n\nCleared print spacer");
         robertClone.printAll();
-        Object[] robertCloneBucket = robertClone.getBucket();
-        System.out.println("\n\n" + robertCloneBucket[0]);
     }
 }
